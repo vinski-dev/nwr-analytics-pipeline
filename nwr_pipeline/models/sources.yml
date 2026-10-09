@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: bronze
+    database: nwr-data-platform # UPDATE THIS
+    schema: bronze # The dataset where your Python script loaded the data
+    tables:
+      - name: raw_hotel_guests
+      - name: raw_casino_spins

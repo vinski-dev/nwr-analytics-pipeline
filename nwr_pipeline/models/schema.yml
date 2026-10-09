@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: fct_gaming_revenue
+    description: "Gold layer fact table tracking net casino gaming revenue per transaction."
+    columns:
+      - name: transaction_id
+        description: "Primary key. Unique identifier for the casino spin."
+        tests:
+          - unique
+          - not_null
+      - name: global_guest_sk
+        description: "Surrogate key mapping back to the guest's unified identity."
+        tests:
+          - not_null
+      - name: net_revenue
+        description: "Calculated as wager_amount minus win_amount."
+
+  - name: int_guest_identity
+    description: "Intermediate model resolving legacy hotel IDs and new casino IDs into a single surrogate key."
+    columns:
+      - name: global_guest_sk
+        tests:
+          - unique
+          - not_null

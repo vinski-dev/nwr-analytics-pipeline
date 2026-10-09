@@ -1,0 +1,29 @@
+[0m03:39:34.381787 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000015DC41166D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000015DC41482D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000015DC41165D0>]}
+
+
+============================== 03:39:34.392638 | fada7c5e-df20-4fbd-a7fa-0a4d849c767d ==============================
+[0m03:39:34.392638 [info ] [MainThread]: Running with dbt=1.11.12
+[0m03:39:34.394648 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\Alexis Allen Manuel\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'indirect_selection': 'eager', 'invocation_command': 'dbt init nwr_pipeline', 'use_colors': 'True', 'use_experimental_parser': 'False', 'log_path': 'logs'}
+[0m03:39:34.478023 [debug] [MainThread]: Starter project path: C:\Users\Alexis Allen Manuel\AppData\Local\Programs\Python\Python311\Lib\site-packages\dbt\include\starter_project
+[0m03:39:34.590531 [info ] [MainThread]: 
+Your new dbt project "nwr_pipeline" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m03:39:34.591445 [info ] [MainThread]: Setting up your profile.
+[0m03:42:39.178069 [info ] [MainThread]: Profile nwr_pipeline written to C:\Users\Alexis Allen Manuel\.dbt\profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m03:42:39.181335 [debug] [MainThread]: Command `dbt init` succeeded at 03:42:39.180332 after 184.98 seconds
+[0m03:42:39.182033 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000015DBC3BE1D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000015DBC3BD510>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000015DC4114510>]}
+[0m03:42:39.182033 [debug] [MainThread]: Flushing usage events
+[0m03:42:40.577376 [debug] [MainThread]: An error was encountered while trying to flush usage events

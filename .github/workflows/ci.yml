@@ -1,0 +1,52 @@
+name: dbt CI Workflow
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  dbt_ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install dbt-bigquery
+
+      - name: Configure dbt Profile for CI
+        run: |
+          mkdir -p ~/.dbt
+          echo "nwr_pipeline:" > ~/.dbt/profiles.yml
+          echo "  target: ci" >> ~/.dbt/profiles.yml
+          echo "  outputs:" >> ~/.dbt/profiles.yml
+          echo "    ci:" >> ~/.dbt/profiles.yml
+          echo "      type: bigquery" >> ~/.dbt/profiles.yml
+          echo "      method: service-account" >> ~/.dbt/profiles.yml
+          echo "      project: nwr-data-platform" >> ~/.dbt/profiles.yml
+          echo "      dataset: dbt_ci_scratch" >> ~/.dbt/profiles.yml
+          echo "      threads: 4" >> ~/.dbt/profiles.yml
+          echo "      timeout_seconds: 300" >> ~/.dbt/profiles.yml
+          echo "      keyfile_json: '${{ secrets.GCP_SA_KEY }}'" >> ~/.dbt/profiles.yml
+
+      - name: Run dbt Dependencies
+        working-directory: ./nwr_pipeline
+        run: dbt deps
+
+      - name: Run dbt Snapshot and Compile
+        working-directory: ./nwr_pipeline
+        run: |
+          dbt snapshot --target ci
+          dbt run --target ci
+
+      - name: Run dbt Data Quality Tests
+        working-directory: ./nwr_pipeline
+        run: dbt test --target ci

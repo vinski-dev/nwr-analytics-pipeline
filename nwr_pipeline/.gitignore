@@ -1,0 +1,17 @@
+# Python & Virtual Environment
+venv/
+__pycache__/
+*.pyc
+
+# dbt Compiled & Generated Artifacts
+nwr_pipeline/target/
+nwr_pipeline/dbt_packages/
+nwr_pipeline/logs/
+
+# Credentials & Secrets (CRITICAL)
+*.json
+!package-lock.json
+
+target/
+dbt_packages/
+logs/
